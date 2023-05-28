@@ -14,10 +14,9 @@
         android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.343" />
+        app:layout_constraintVertical_bias="0.338" />
 
     <Button
         android:id="@+id/btnProfile"
@@ -28,7 +27,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.631" />
+        app:layout_constraintVertical_bias="0.631"
+        android:backgroundTint="@color/cyan"/>
     <Button
         android:id="@+id/btnCatatan"
         android:layout_width="wrap_content"
@@ -38,7 +38,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.715" />
+        app:layout_constraintVertical_bias="0.715"
+        android:backgroundTint="@color/cyan"/>
 
     <Button
         android:id="@+id/btnTentang"
@@ -50,6 +51,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.802" />
+        app:layout_constraintVertical_bias="0.802"
+        android:backgroundTint="@color/cyan"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
