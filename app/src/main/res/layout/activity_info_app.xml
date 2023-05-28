@@ -4,14 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".tambah">
+    tools:context=".InfoApp">
 
-    <EditText
-        android:id="@+id/txtcatatan"
-        android:layout_width="318dp"
-        android:layout_height="427dp"
-        android:ems="10"
-        android:inputType="text"
-        tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="200dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

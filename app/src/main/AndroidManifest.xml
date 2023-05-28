@@ -13,17 +13,20 @@
         android:theme="@style/Theme.RyuNote"
         tools:targetApi="31">
         <activity
-            android:name=".tambah"
+            android:name=".InfoApp"
+            android:exported="false" />
+        <activity
+            android:name=".Profile"
+            android:exported="false" />
+        <activity
+            android:name=".CatatanHarian"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.RyuNote.NoActionBar" />
+            android:exported="false" />
         <activity
-            android:name=".SplashActivity"
-            android:exported="true"
-            android:theme="@style/Theme.RyuNote.NoActionBar">
+            android:name=".SplashScreen"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
