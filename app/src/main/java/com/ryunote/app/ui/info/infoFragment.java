@@ -1,4 +1,4 @@
-package com.ryunote.app.info;
+package com.ryunote.app.ui.info;
 
 import android.os.Bundle;
 

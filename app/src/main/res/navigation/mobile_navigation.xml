@@ -12,12 +12,12 @@
         tools:layout="@layout/fragment_profile"/>
     <fragment
         android:id="@+id/navigation_note"
-        android:name="com.ryunote.app.note.NoteFragment"
+        android:name="com.ryunote.app.ui.note.NoteFragment"
         android:label="@string/title_note"
         tools:layout="@layout/fragment_note"/>
     <fragment
         android:id="@+id/navigation_info"
-        android:name="com.ryunote.app.info.infoFragment"
+        android:name="com.ryunote.app.ui.info.infoFragment"
         android:label="@string/title_info"
         tools:layout="@layout/fragment_info"/>
 
