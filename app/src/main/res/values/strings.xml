@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">RyuNote</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Selamat Datang di RyuNote</string>
+    <string name="nav_header_subtitle">Develoved By Ihsan Ramadhan</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Profile</string>
+    <string name="menu_gallery">Daftar Catatan</string>
+    <string name="menu_slideshow">Tentang Aplikasi</string>
+
 </resources>
