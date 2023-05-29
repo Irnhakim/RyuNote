@@ -1,5 +1,5 @@
 package com.ryunote.app.activity;
-
+//Ihsan Ramadhan Nul Hakim 10120143 IF-4
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;

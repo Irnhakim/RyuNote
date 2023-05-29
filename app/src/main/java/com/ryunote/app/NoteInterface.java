@@ -1,5 +1,5 @@
 package com.ryunote.app;
-
+//Ihsan Ramadhan Nul Hakim 10120143 IF-4
 import android.database.Cursor;
 
 import com.ryunote.app.model.Note;

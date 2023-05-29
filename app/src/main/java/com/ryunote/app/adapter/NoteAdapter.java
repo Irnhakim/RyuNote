@@ -1,5 +1,5 @@
 package com.ryunote.app.adapter;
-
+//Ihsan Ramadhan Nul Hakim 10120143 IF-4
 import android.content.Intent;
 import android.provider.ContactsContract;
 import android.view.LayoutInflater;

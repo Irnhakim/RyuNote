@@ -1,5 +1,5 @@
 package com.ryunote.app.db;
-
+//Ihsan Ramadhan Nul Hakim 10120143 IF-4
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
