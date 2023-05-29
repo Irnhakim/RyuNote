@@ -6,46 +6,39 @@
     tools:context=".ui.info.InfoFragment2">
 
     <TextView
-        android:id="@+id/navigation_info2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:text=""/>
-
-    <RelativeLayout
-        android:id="@+id/layout_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/navigation_info2"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
-        <TextView
-            android:id="@+id/title_info_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="35dp"
-            android:textColor="@color/black"
-            android:text=""/>
-    </RelativeLayout>
-
-    <LinearLayout
+        android:id="@+id/txtJudul"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/layout_title"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="20dp"
+        android:text="TENTANG APLIKASI"
+        android:textAlignment="center"
+        android:textStyle="bold"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:orientation="vertical">
+        android:textSize="24dp"/>
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        android:layout_below="@+id/txtJudul"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/txtinfo1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" App Name : RyuNote"
+        android:layout_below="@+id/logo"/>
+    <TextView
+        android:id="@+id/txtinfo2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Versi : 1.0"
+        android:layout_below="@id/txtinfo1"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hak Cipta : Ihsan Ramadhan NH "
+        android:layout_below="@+id/txtinfo2"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="hai"
-            android:textAlignment="center"
-            android:textSize="20dp" />
-    </LinearLayout>
+
 </RelativeLayout>
