@@ -40,7 +40,7 @@ public class AddNoteActivity extends AppCompatActivity {
         button = findViewById(R.id.back);
         editTitle = findViewById(R.id.title);
         editCategory = findViewById(R.id.category);
-        editDesc = findViewById(R.id.txtDescription);
+        editDesc = findViewById(R.id.descriptionInput);
         addButton = findViewById(R.id.buttonAdd);
         deleteButton = findViewById(R.id.buttonDelete);
         titleAdd = findViewById(R.id.txt_add);
