@@ -1,28 +1,46 @@
 package com.ryunote.app.model;
 
 public class Note {
+    private String id;
+    private String title;
+    private String description;
+    private long createdTime;
 
-    private String noteText;
-    private long noteDate;
-
-    public Note(String noteText, long noteDate){
-        this.noteText = noteText;
-        this.noteDate = noteDate;
+    public Note(String id, String title, String description, long createdTime) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.createdTime = createdTime;
     }
 
-    public String getNoteText() {
-        return noteText;
+    public String getTitle() {
+        return title;
     }
 
-    public void setNoteText(String noteText) {
-        this.noteText = noteText;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public long getNoteDate() {
-        return noteDate;
+    public String getDescription() {
+        return description;
     }
 
-    public void setNoteDate(long noteDate) {
-        this.noteDate = noteDate;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public long getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(long createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public String getId() {
+        return id;
+    }
+    public void setId(String id) {
+        this.id = id;
     }
 }
