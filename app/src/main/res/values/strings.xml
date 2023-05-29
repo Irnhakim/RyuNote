@@ -5,4 +5,10 @@
     <string name="title_profile">Profile</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="info_aplikasi">Mau buku catatan yang mudah digunakan untuk mencatat cepat?
+        Mau notes praktis untuk membuat daftar tugas, daftar belanja dengan pengingat?
+        Aplikasi pencatat, buku catatan, dan notes gratis ini memenuhi segala kebutuhan Anda. Tanpa iklan!
+
+        Notes, Catatan, Daftar - RyuNote adalah aplikasi catatan keren untuk android. dengan RyuNote
+        Anda dapat menulis  catatan dengan mudah,cepat, dan aman. Tulis catatan seperti menggunakan pena dan kertas. </string>
 </resources>
