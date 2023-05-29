@@ -32,7 +32,7 @@ public class InfoFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_info, container, false);
 
-        viewPager = root.findViewById(R.id.viewPager);
+        viewPager = root.findViewById(R.id.view_pager_info);
 
         return root;
     }
