@@ -1,7 +1,6 @@
-package com.ryunote.app;
+package com.ryunote.app.activity;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,18 +12,12 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.ryunote.app.adapter.NoteAdapter;
-import com.ryunote.app.databinding.ActivityMainBinding;
-import com.ryunote.app.db.NoteImp;
-import com.ryunote.app.db.NoteInterface;
-import com.ryunote.app.model.Note;
+import com.ryunote.app.R;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.ryunote.app.databinding.ActivityMainBinding;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,20 +38,10 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        FloatingActionButton btnTambah = findViewById(R.id.btnTambah);
-        btnTambah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,AddNote.class));
-            }
-        });
-
 
     }
 
 
-
-    //kalo bug list note nya pindahin yg bawah ini ke NoteFragment, yg ini(); juga pindahin
 
 
 }

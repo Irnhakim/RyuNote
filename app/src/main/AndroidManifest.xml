@@ -13,13 +13,19 @@
         android:theme="@style/Theme.RyuNote"
         tools:targetApi="31">
         <activity
-            android:name=".AddNote"
+            android:name=".ui.info.InfoFragment2"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.info.InfoFragment1"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".activity.AddNoteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

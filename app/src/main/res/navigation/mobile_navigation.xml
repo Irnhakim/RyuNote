@@ -3,23 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_profile">
+    app:startDestination="@+id/navigation_info">
+
+    <fragment
+        android:id="@+id/navigation_info"
+        android:name="com.ryunote.app.ui.info.InfoFragment"
+        android:label="@string/title_info"
+        tools:layout="@layout/fragment_info"/>
+
+    <fragment
+        android:id="@+id/navigation_note"
+        android:name="com.ryunote.app.ui.note.NoteFragment"
+        android:label="@string/title_note"
+        tools:layout="@layout/fragment_note"/>
 
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.ryunote.app.ui.profile.profileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile"/>
-    <fragment
-        android:id="@+id/navigation_note"
-        android:name="com.ryunote.app.ui.note.NoteFragment"
-        android:label="@string/title_note"
-        tools:layout="@layout/fragment_note"/>
-    <fragment
-        android:id="@+id/navigation_info"
-        android:name="com.ryunote.app.ui.info.infoFragment"
-        android:label="@string/title_info"
-        tools:layout="@layout/fragment_info"/>
 
 
 </navigation>
