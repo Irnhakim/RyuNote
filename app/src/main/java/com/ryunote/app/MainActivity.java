@@ -16,6 +16,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ryunote.app.adapter.NoteAdapter;
 import com.ryunote.app.databinding.ActivityMainBinding;
 import com.ryunote.app.db.NoteImp;
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        btnTambah = findViewById(R.id.btnTambah);
+        FloatingActionButton btnTambah = findViewById(R.id.btnTambah);
         btnTambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -10,7 +10,7 @@ import android.widget.Button;
 public class AddNote extends AppCompatActivity {
 
     private Button btnSimpan;
- 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
