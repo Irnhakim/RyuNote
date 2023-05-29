@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.ryunote.app.R;
 
 
-public class profileFragment extends Fragment {
+public class ProfileFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
