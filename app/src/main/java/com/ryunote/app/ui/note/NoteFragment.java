@@ -44,7 +44,7 @@ public class NoteFragment extends Fragment  {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         mainActivity = (MainActivity) getActivity();
-        mainActivity.getSupportActionBar().show();
+        mainActivity.getSupportActionBar().hide();
 
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.mynote);
