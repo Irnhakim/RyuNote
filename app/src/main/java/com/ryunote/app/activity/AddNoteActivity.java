@@ -119,5 +119,7 @@ public class AddNoteActivity extends AppCompatActivity {
             finish();
             Toast.makeText(this, "Catatan berhasil di hapus", Toast.LENGTH_SHORT).show();
         });
+
+
     }
 }

@@ -6,11 +6,18 @@
     android:layout_margin="15pt"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HALAMAN LOGIN"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold" />
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="50dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/logo" />
@@ -21,13 +28,14 @@
         android:text="Masuk Dengan Google"
         android:textAlignment="center"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginBottom="50dp"/>
 
-    <Button
+    <com.google.android.gms.common.SignInButton
         android:id="@+id/btnSignIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15pt"
-        android:text="Masuk" />
+        android:layout_margin="70dp" />
+
 
 </LinearLayout>
