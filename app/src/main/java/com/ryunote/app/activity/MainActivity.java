@@ -22,7 +22,6 @@ import com.ryunote.app.ui.profile.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
     private BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 

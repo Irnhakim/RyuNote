@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "817880108906",
+    "project_id": "ryunote-80ec0",
+    "storage_bucket": "ryunote-80ec0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817880108906:android:60737f35ffd35abd071f13",
+        "android_client_info": {
+          "package_name": "com.ryunote.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "817880108906-ci9qe9p3cahg27k7dqqal5k58skpcg1j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8tKbjeR0lidAaqcNp-8hdyPGFne4LLD0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "817880108906-ci9qe9p3cahg27k7dqqal5k58skpcg1j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
