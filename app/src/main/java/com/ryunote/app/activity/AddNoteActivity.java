@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.ryunote.app.NoteInterface;
 import com.ryunote.app.R;
 import com.ryunote.app.db.DatabaseHelper;
+import com.ryunote.app.db.FirebaseHelper;
 import com.ryunote.app.model.Note;
 
 import java.util.Date;
@@ -29,7 +30,7 @@ public class AddNoteActivity extends AppCompatActivity {
     Button deleteButton;
     TextView titleAdd;
 
-    private NoteInterface noteInterface;
+    private FirebaseHelper noteInterface;
     Note note = null;
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
@@ -45,7 +46,7 @@ public class AddNoteActivity extends AppCompatActivity {
         addButton = findViewById(R.id.buttonAdd);
         deleteButton = findViewById(R.id.buttonDelete);
         titleAdd = findViewById(R.id.txt_add);
-        noteInterface = new DatabaseHelper(this);
+        noteInterface = new FirebaseHelper();
 
         button.setOnClickListener(v -> {
             finish();

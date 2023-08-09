@@ -16,6 +16,9 @@ public class Note implements Serializable {
         this.date = date;
     }
 
+    public Note(){
+
+    }
     public String getId() {
         return id;
     }

@@ -15,6 +15,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.ryunote.app.NoteInterface;
 import com.ryunote.app.activity.AddNoteActivity;
 import com.ryunote.app.activity.MainActivity;
@@ -29,11 +35,11 @@ import java.util.List;
 
 public class NoteFragment extends Fragment  {
     private MainActivity mainActivity;
-    private List<Note> note;
-    private NoteInterface noteInterface;
+    private List<Note> notes;
+    private DatabaseReference notesRef;
     private RecyclerView recyclerView;
     private NoteAdapter noteAdapter;
-    private FloatingActionButton addButton;
+    private FloatingActionButton addButton;;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,7 +58,7 @@ public class NoteFragment extends Fragment  {
         addButton.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), AddNoteActivity.class));
         });
-
+        notesRef = FirebaseDatabase.getInstance().getReference().child("Notes").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         read();
     }
 
@@ -63,24 +69,25 @@ public class NoteFragment extends Fragment  {
     }
 
     private void read() {
-        note = new ArrayList<Note>();
-        noteInterface = new DatabaseHelper(getContext());
-        Cursor cursor = noteInterface.read();
-        if (cursor.moveToFirst()){
-            do {
-                Note n = new Note(
-                        cursor.getString(0),
-                        cursor.getString(1),
-                        cursor.getString(2),
-                        cursor.getString(3),
-                        cursor.getString(4)
-                );
+        notes = new ArrayList<Note>();
+        notesRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                notes.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Note note = snapshot.getValue(Note.class);
+                    notes.add(note);
+                }
+                noteAdapter.notifyDataSetChanged();
+            }
 
-                note.add(n);
-            } while (cursor.moveToNext());
-        }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle error
+            }
+        });
 
-        noteAdapter = new NoteAdapter(note);
+        noteAdapter = new NoteAdapter(notes);
         recyclerView.setAdapter(noteAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
