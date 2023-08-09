@@ -60,8 +60,16 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/txtEmail"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="50pt"
+            android:layout_marginTop="25pt"
             android:text="Logout" />
+
+        <Button
+            android:id="@+id/btnNotif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnLogout"
+            android:layout_centerHorizontal="true"
+            android:text="Notif" />
 
 
     </RelativeLayout>

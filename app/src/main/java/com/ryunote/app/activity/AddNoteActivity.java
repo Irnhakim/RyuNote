@@ -2,8 +2,16 @@ package com.ryunote.app.activity;
 //Ihsan Ramadhan Nul Hakim 10120143 IF-4
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
@@ -31,7 +39,10 @@ public class AddNoteActivity extends AppCompatActivity {
     TextView titleAdd;
 
     private FirebaseHelper noteInterface;
+
+    private static final String CHANNEL_ID = "ryunote_notification_channel";
     Note note = null;
+
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +63,7 @@ public class AddNoteActivity extends AppCompatActivity {
             finish();
         });
 
-        if (note == null){
+        if (note == null) {
             deleteButton.setVisibility(View.GONE);
 
             addButton.setOnClickListener(v -> {
@@ -73,12 +84,13 @@ public class AddNoteActivity extends AppCompatActivity {
                         d.getTime() + "",
                         editTitle.getText().toString(),
                         editCategory.getText().toString(),
-                        editDesc.getText().toString() ,
+                        editDesc.getText().toString(),
                         "di buat pada " + date + ""
                 );
 
                 noteInterface.create(n);
                 finish();
+                showNotification("Catatan berhasil di tambah");
                 Toast.makeText(this, "Catatan berhasil di tambah", Toast.LENGTH_SHORT).show();
             });
         } else {
@@ -103,7 +115,7 @@ public class AddNoteActivity extends AppCompatActivity {
                 }
 
                 Date d = new Date();
-                CharSequence date = DateFormat.format("EEEE, d MMMM yyyy HH:mm",d.getTime());
+                CharSequence date = DateFormat.format("EEEE, d MMMM yyyy HH:mm", d.getTime());
 
                 note.setTitle(editTitle.getText().toString());
                 note.setCategory(editCategory.getText().toString());
@@ -111,16 +123,44 @@ public class AddNoteActivity extends AppCompatActivity {
                 note.setDate("terakhir di edit " + date + "");
                 noteInterface.update(note);
                 finish();
+                showNotification("Catatan berhasil di edit");
                 Toast.makeText(this, "Catatan berhasil di edit", Toast.LENGTH_SHORT).show();
             });
         }
 
-        deleteButton.setOnClickListener(v-> {
+        deleteButton.setOnClickListener(v -> {
             noteInterface.delete(note.getId());
             finish();
+            showNotification("Catatan berhasil di hapus");
             Toast.makeText(this, "Catatan berhasil di hapus", Toast.LENGTH_SHORT).show();
         });
 
 
+    }
+
+    private void showNotification(String message) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.channel_name);
+            String description = getString(R.string.channel_description);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.logo)
+                .setContentTitle("RyuNote")
+                .setContentText(message)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1);
+            return;
+        }
+        notificationManager.notify(0, builder.build());
     }
 }

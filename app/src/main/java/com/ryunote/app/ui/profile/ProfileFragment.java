@@ -3,8 +3,10 @@ package com.ryunote.app.ui.profile;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +15,18 @@ import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.ryunote.app.R;
 import com.ryunote.app.activity.LoginActivity;
 
 
 public class ProfileFragment extends Fragment {
-
+    private static final String TAG = "Firebase Cloud Messaging";
     private Button btnLogout;
+    private Button btnNotif;
     private FirebaseAuth auth;
 
     @Override
@@ -29,8 +35,23 @@ public class ProfileFragment extends Fragment {
 
         auth = FirebaseAuth.getInstance();
 
-        btnLogout = view.findViewById(R.id.btnLogout);
+        btnNotif = view.findViewById(R.id.btnNotif);
+        btnNotif.setOnClickListener(View  -> {
+            FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+                @Override
+                public void onComplete(@NonNull Task<String> task) {
+                    if (!task.isSuccessful()) {
+                        Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                        return;
+                    }
+                    String token = task.getResult();
+                    Log.d(TAG, "Token: " + token);
+                }
+            });
+        });
 
+
+        btnLogout = view.findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
