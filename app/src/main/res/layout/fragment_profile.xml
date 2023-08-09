@@ -54,6 +54,15 @@
             android:layout_centerHorizontal="true"
             android:paddingTop="10dp"/>
 
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtEmail"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50pt"
+            android:text="Logout" />
+
 
     </RelativeLayout>
 
