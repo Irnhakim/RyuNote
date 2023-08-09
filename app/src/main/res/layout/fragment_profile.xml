@@ -69,7 +69,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/btnLogout"
             android:layout_centerHorizontal="true"
-            android:text="Notif" />
+            android:text="Notif"
+            android:visibility="invisible"/>
 
 
     </RelativeLayout>
