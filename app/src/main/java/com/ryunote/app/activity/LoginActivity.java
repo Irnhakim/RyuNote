@@ -18,6 +18,7 @@ import android.provider.Settings;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -38,21 +39,45 @@ import com.ryunote.app.model.User;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private EditText txtEmail, txtPassword;
+    private Button btnLogin, btnRegister;
     SignInButton btnSignIn;
     FirebaseAuth auth;
     FirebaseDatabase database;
     GoogleSignInClient mGoogleSignInClient;
     ProgressDialog progressDialog;
     private static final int NOTIFICATION_PERMISSION_REQUEST_CODE = 1;
+    private static final int NOTIFICATION_PERMISSION_REQUEST_CODE_FOR_EMAIL_LOGIN = 2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
 
-    btnSignIn = findViewById(R.id.btnSignIn);
+        txtEmail = findViewById(R.id.txtEmail);
+        txtPassword = findViewById(R.id.txtPassword);
+        btnLogin = findViewById(R.id.btnLogin);
+        btnRegister = findViewById(R.id.btnRegister);
+        btnSignIn = findViewById(R.id.btnSignIn);
+        auth = FirebaseAuth.getInstance();
 
-    auth = FirebaseAuth.getInstance();
+        btnRegister.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
+        });
+
+        btnLogin.setOnClickListener(v -> {
+            if(txtEmail.getText().toString().isEmpty()){
+                txtEmail.setError("Email is required");
+                return;
+            } else if (txtPassword.getText().toString().isEmpty()) {
+                txtPassword.setError("Password is required");
+                return;
+            }
+            login(txtEmail.getText().toString(), txtPassword.getText().toString());
+        });
+
 
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser != null) {
@@ -82,10 +107,35 @@ public class LoginActivity extends AppCompatActivity {
             requestNotificationPermission();
         }
     });
-
-
-
     }
+
+    private void login(String email, String password) {
+        requestNotificationPermissionForEmailLogin(email, password);
+    }
+
+
+    private void requestNotificationPermissionForEmailLogin(final String email, final String password) {
+        if (!NotificationManagerCompat.from(this).areNotificationsEnabled()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Izin Notifikasi");
+            builder.setMessage("Izin notifikasi diperlukan untuk memberikan pemberitahuan penting.");
+            builder.setPositiveButton("Izinkan", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    // Buka halaman pengaturan notifikasi
+                    Intent intent = new Intent();
+                    intent.setAction(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                    intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+                    startActivityForResult(intent, NOTIFICATION_PERMISSION_REQUEST_CODE_FOR_EMAIL_LOGIN);
+                }
+            });
+            builder.setNegativeButton("Tidak Izinkan", null);
+            builder.show();
+        } else {
+            performEmailLogin(email, password);
+        }
+    }
+
 
     private void requestNotificationPermission() {
         if (!NotificationManagerCompat.from(this).areNotificationsEnabled()) {
@@ -105,7 +155,6 @@ public class LoginActivity extends AppCompatActivity {
             builder.setNegativeButton("Tidak Izinkan", null);
             builder.show();
         } else {
-            // Izin notifikasi sudah diaktifkan, lanjutkan dengan Sign In
             signIn();
         }
     }
@@ -140,6 +189,9 @@ public class LoginActivity extends AppCompatActivity {
         }else if (requestCode == NOTIFICATION_PERMISSION_REQUEST_CODE) {
             // Setelah pengguna memberikan izin notifikasi, lanjutkan dengan Sign In
             signIn();
+        }else if (requestCode == NOTIFICATION_PERMISSION_REQUEST_CODE_FOR_EMAIL_LOGIN) {
+            // Setelah pengguna memberikan izin notifikasi, lanjutkan dengan login menggunakan email dan password
+            performEmailLogin(txtEmail.getText().toString(), txtPassword.getText().toString());
         }
     }
 
@@ -174,4 +226,43 @@ public class LoginActivity extends AppCompatActivity {
                 });
 
     }
+
+    private void reload() {
+        startActivity(new Intent(this, MainActivity.class));
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if(currentUser != null){
+            reload();
+        }
+    }
+
+    private void performEmailLogin(String email, String password) {
+        progressDialog.setTitle("Logging in");
+        progressDialog.setMessage("Please wait...");
+        progressDialog.show();
+
+        auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        progressDialog.dismiss();
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = auth.getCurrentUser();
+                            if (user != null) {
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Login failed. Please check your credentials.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
 }

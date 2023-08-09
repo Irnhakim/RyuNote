@@ -60,7 +60,7 @@
         android:id="@+id/btnSignIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Masuk dengan Google"
+        android:textAlignment="textStart"
         android:layout_margin="10dp" />
 
     <TextView
