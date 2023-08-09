@@ -3,14 +3,18 @@ package com.ryunote.app.activity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -75,13 +79,35 @@ public class LoginActivity extends AppCompatActivity {
     btnSignIn.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-
-                signIn();
+            requestNotificationPermission();
         }
     });
 
+        
 
+    }
 
+    private void requestNotificationPermission() {
+        if (!NotificationManagerCompat.from(this).areNotificationsEnabled()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Izin Notifikasi");
+            builder.setMessage("Izin notifikasi diperlukan untuk memberikan pemberitahuan penting.");
+            builder.setPositiveButton("Izinkan", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    // Buka halaman pengaturan notifikasi
+                    Intent intent = new Intent();
+                    intent.setAction(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                    intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+                    startActivityForResult(intent, NOTIFICATION_PERMISSION_REQUEST_CODE);
+                }
+            });
+            builder.setNegativeButton("Tidak Izinkan", null);
+            builder.show();
+        } else {
+            // Izin notifikasi sudah diaktifkan, lanjutkan dengan Sign In
+            signIn();
+        }
     }
 
     int RC_SIGN_IN = 40;
@@ -111,6 +137,9 @@ public class LoginActivity extends AppCompatActivity {
                 throw new RuntimeException(e);
             }
 
+        }else if (requestCode == NOTIFICATION_PERMISSION_REQUEST_CODE) {
+            // Setelah pengguna memberikan izin notifikasi, lanjutkan dengan Sign In
+            signIn();
         }
     }
 
