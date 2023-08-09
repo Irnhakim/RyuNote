@@ -8,35 +8,28 @@
     android:layout_margin="15pt"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/btnKembali"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/baseline_arrow_back_24" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="HALAMAN REGISTER"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textStyle="bold" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="188dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="5dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/logo" />
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         app:boxBackgroundMode="outline">
         <EditText
-            android:id="@+id/txtNamaLengkap"
+            android:id="@+id/txtNamaRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nama Lengkap"
@@ -45,7 +38,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         app:boxBackgroundMode="outline">
         <EditText
             android:id="@+id/txtEmailRegister"
@@ -57,7 +50,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         app:boxBackgroundMode="outline"
         app:passwordToggleEnabled="true">
         <EditText
@@ -71,7 +64,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         app:boxBackgroundMode="outline"
         app:passwordToggleEnabled="true">
         <EditText
@@ -85,6 +78,18 @@
         android:id="@+id/btnDaftar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:text="Register" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="start"
+        android:text="Sudah punya akun? " />
+    <Button
+        android:id="@+id/btnMasuk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="Login" />
 </LinearLayout>
