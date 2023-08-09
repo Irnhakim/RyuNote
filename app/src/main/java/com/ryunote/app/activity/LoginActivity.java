@@ -40,9 +40,19 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
+
     btnSignIn = findViewById(R.id.btnSignIn);
 
     auth = FirebaseAuth.getInstance();
+
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if (currentUser != null) {
+
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
     database = FirebaseDatabase.getInstance();
 
     progressDialog = new ProgressDialog(LoginActivity.this);
