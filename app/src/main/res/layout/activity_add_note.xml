@@ -62,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Decription"
-            android:textColor="@color/black"
+            android:textColor="#00B0FF"
             android:background="#3000B0FF"
             android:padding="10dp"
             android:layout_margin="10dp"

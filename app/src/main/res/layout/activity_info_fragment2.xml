@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="20dp"
     tools:context=".ui.info.InfoFragment2">
 
     <TextView
@@ -26,7 +27,7 @@
         android:id="@+id/txtinfo1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=" App Name : RyuNote"
+        android:text="App Name : RyuNote"
         android:layout_below="@+id/logo"/>
     <TextView
         android:id="@+id/txtinfo2"
