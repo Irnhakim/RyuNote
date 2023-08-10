@@ -171,25 +171,23 @@ public class LoginActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == RC_SIGN_IN){
-
-
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-
-                firebaseAuth(account.getIdToken());
-
-            } catch (ApiException e) {
-                throw new RuntimeException(e);
+        if (requestCode == RC_SIGN_IN && resultCode != RESULT_CANCELED) {
+            if (data != null) {
+                Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+                try {
+                    GoogleSignInAccount account = task.getResult(ApiException.class);
+                    firebaseAuth(account.getIdToken());
+                } catch (ApiException e) {
+                    Toast.makeText(LoginActivity.this, "Sign-in failed. Please try again.", Toast.LENGTH_SHORT).show();
+                }
             }
-
-        }else if (requestCode == NOTIFICATION_PERMISSION_REQUEST_CODE) {
+        } else if (requestCode == NOTIFICATION_PERMISSION_REQUEST_CODE) {
             signIn();
-        }else if (requestCode == NOTIFICATION_PERMISSION_REQUEST_CODE_FOR_EMAIL_LOGIN) {
+        } else if (requestCode == NOTIFICATION_PERMISSION_REQUEST_CODE_FOR_EMAIL_LOGIN) {
             performEmailLogin(txtEmail.getText().toString(), txtPassword.getText().toString());
         }
     }
+
 
     public void firebaseAuth(String idToken) {
 
