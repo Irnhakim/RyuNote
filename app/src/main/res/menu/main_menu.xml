@@ -16,4 +16,9 @@
         android:id="@+id/profile"
         android:icon="@drawable/ic_profile"
         android:title="@string/title_profile"/>
+
+    <item
+        android:id="@+id/exit"
+        android:icon="@drawable/baseline_logout_24"
+        android:title="@string/logout"/>
 </menu>

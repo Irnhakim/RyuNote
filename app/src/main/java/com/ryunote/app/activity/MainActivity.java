@@ -1,8 +1,14 @@
 package com.ryunote.app.activity;
 //Ihsan Ramadhan Nul Hakim 10120143 IF-4
+import static androidx.core.content.ContentProviderCompat.requireContext;
+
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +20,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.ryunote.app.R;
 import com.ryunote.app.databinding.ActivityMainBinding;
 import com.ryunote.app.ui.info.InfoFragment;
@@ -47,6 +54,27 @@ public class MainActivity extends AppCompatActivity {
                     fragment = new NoteFragment();
                 } else if (itemId == R.id.profile ) {
                     fragment = new ProfileFragment();
+                } else if (itemId == R.id.exit) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setTitle("Konfirmasi Logout");
+                    builder.setMessage("Apakah anda yakin ingin keluar?");
+                    builder.setCancelable(true);
+                    builder.setPositiveButton("Ya", (dialog, which) -> {
+                        FirebaseAuth.getInstance().signOut();
+                        GoogleSignIn.getClient(
+                                MainActivity.this,
+                                new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
+                        ).signOut();
+                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        finish();
+                    });
+                    builder.setNegativeButton("Tidak", (dialog, which) -> {
+                        dialog.cancel();
+                    });
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
                 }
                 return getFragmentPage(fragment);
             }

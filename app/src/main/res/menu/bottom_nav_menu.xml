@@ -6,8 +6,6 @@
         android:icon="@drawable/baseline_info_24"
         android:title="@string/title_info"/>
 
-
-
     <item
         android:id="@+id/navigation_note"
         android:icon="@drawable/baseline_sticky_note_2_24"
@@ -17,6 +15,10 @@
         android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_profile"
         android:title="@string/title_profile"/>
+    <item
+        android:id="@+id/exit"
+        android:icon="@drawable/baseline_logout_24"
+        android:title="Logout"/>
 
 
 </menu>
