@@ -33,7 +33,7 @@
         android:id="@+id/txtinfo2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Versi : 1.0"
+        android:text="Versi : 2.0"
         android:layout_below="@id/txtinfo1"/>
     <TextView
         android:layout_width="match_parent"

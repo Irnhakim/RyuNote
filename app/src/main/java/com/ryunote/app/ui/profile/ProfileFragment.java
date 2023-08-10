@@ -1,6 +1,7 @@
 package com.ryunote.app.ui.profile;
 //Ihsan Ramadhan Nul Hakim 10120143 IF-4
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -28,6 +30,9 @@ public class ProfileFragment extends Fragment {
     private Button btnLogout;
     private Button btnNotif;
     private FirebaseAuth auth;
+    private ImageButton fb;
+    private ImageButton ig;
+    private ImageButton github;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,6 +41,33 @@ public class ProfileFragment extends Fragment {
         auth = FirebaseAuth.getInstance();
 
         btnNotif = view.findViewById(R.id.btnNotif);
+        fb = view.findViewById(R.id.fb);
+        ig = view.findViewById(R.id.ig);
+        github = view.findViewById(R.id.github);
+
+        fb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openSocialMedia("https://www.facebook.com/irnh4kim");
+            }
+        });
+
+        ig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openSocialMedia("https://www.instagram.com/irnhakim/");
+            }
+        });
+
+        github.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openSocialMedia("https://github.com/Irnhakim");
+            }
+        });
+
+
+
         btnNotif.setOnClickListener(View  -> {
             FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
                 @Override
@@ -77,5 +109,10 @@ public class ProfileFragment extends Fragment {
                 Toast.makeText(getActivity(), "Gagal Logout", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void openSocialMedia(String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
     }
 }
