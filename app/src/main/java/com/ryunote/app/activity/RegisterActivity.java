@@ -70,7 +70,6 @@ public class RegisterActivity extends AppCompatActivity {
             builder.setPositiveButton("Izinkan", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    // Buka halaman pengaturan notifikasi
                     Intent intent = new Intent();
                     intent.setAction(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
                     intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());

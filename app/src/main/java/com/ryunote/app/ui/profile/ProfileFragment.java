@@ -1,5 +1,6 @@
 package com.ryunote.app.ui.profile;
 //Ihsan Ramadhan Nul Hakim 10120143 IF-4
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -94,12 +95,24 @@ public class ProfileFragment extends Fragment {
     }
 
     private void logout() {
-        // End the Firebase session
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Konfirmasi Logout")
+                .setMessage("Apakah Anda yakin ingin logout?")
+                .setPositiveButton("Ya", (dialog, which) -> performLogout())
+                .setNegativeButton("Tidak", (dialog, which) -> dialog.dismiss())
+                .show();
+    }
+    private void openSocialMedia(String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
+    }
+    private void performLogout() {
+
         auth.signOut();
 
         GoogleSignIn.getClient(requireActivity(), GoogleSignInOptions.DEFAULT_SIGN_IN).signOut().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                // Redirect ke halaman login
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
@@ -109,10 +122,5 @@ public class ProfileFragment extends Fragment {
                 Toast.makeText(getActivity(), "Gagal Logout", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    private void openSocialMedia(String url) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        startActivity(intent);
     }
 }

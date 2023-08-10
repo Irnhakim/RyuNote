@@ -122,7 +122,6 @@ public class LoginActivity extends AppCompatActivity {
             builder.setPositiveButton("Izinkan", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    // Buka halaman pengaturan notifikasi
                     Intent intent = new Intent();
                     intent.setAction(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
                     intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
@@ -145,7 +144,6 @@ public class LoginActivity extends AppCompatActivity {
             builder.setPositiveButton("Izinkan", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    // Buka halaman pengaturan notifikasi
                     Intent intent = new Intent();
                     intent.setAction(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
                     intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
@@ -187,10 +185,8 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         }else if (requestCode == NOTIFICATION_PERMISSION_REQUEST_CODE) {
-            // Setelah pengguna memberikan izin notifikasi, lanjutkan dengan Sign In
             signIn();
         }else if (requestCode == NOTIFICATION_PERMISSION_REQUEST_CODE_FOR_EMAIL_LOGIN) {
-            // Setelah pengguna memberikan izin notifikasi, lanjutkan dengan login menggunakan email dan password
             performEmailLogin(txtEmail.getText().toString(), txtPassword.getText().toString());
         }
     }
