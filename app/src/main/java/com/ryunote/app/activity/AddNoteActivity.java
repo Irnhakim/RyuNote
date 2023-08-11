@@ -1,6 +1,7 @@
 package com.ryunote.app.activity;
 //Ihsan Ramadhan Nul Hakim 10120143 IF-4
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
@@ -8,12 +9,14 @@ import androidx.core.app.NotificationManagerCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.DownloadManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,13 +24,24 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.firebase.messaging.RemoteMessage;
 import com.ryunote.app.NoteInterface;
 import com.ryunote.app.R;
+import com.ryunote.app.adapter.MyFirebaseMessagingService;
 import com.ryunote.app.db.DatabaseHelper;
 import com.ryunote.app.db.FirebaseHelper;
 import com.ryunote.app.model.Note;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddNoteActivity extends AppCompatActivity {
     ImageButton button;
@@ -37,7 +51,7 @@ public class AddNoteActivity extends AppCompatActivity {
     Button addButton;
     Button deleteButton;
     TextView titleAdd;
-
+    private static final String TAG = "Firebase Cloud Messaging";
     private FirebaseHelper noteInterface;
 
     private static final String CHANNEL_ID = "ryunote_notification_channel";
@@ -90,6 +104,7 @@ public class AddNoteActivity extends AppCompatActivity {
 
                 noteInterface.create(n);
                 finish();
+                sendNotificationToFCM(editTitle.getText().toString(), editDesc.getText().toString());
                 showNotification("Catatan berhasil di tambah");
                 Toast.makeText(this, "Catatan berhasil di tambah", Toast.LENGTH_SHORT).show();
             });
@@ -137,6 +152,47 @@ public class AddNoteActivity extends AppCompatActivity {
 
 
     }
+    private void sendNotificationToFCM(String title, String message) {
+        String serverKey = getString(R.string.FCM_ServerKey);
+        String fcmUrl = "https://fcm.googleapis.com/fcm/send";
+
+        JSONObject payload = new JSONObject();
+        try {
+            payload.put("to", "/topics/notifications"); // Topik notifikasi yang dituju
+            payload.put("priority", "high");
+
+            JSONObject notification = new JSONObject();
+            notification.put("title", title);
+            notification.put("body", message);
+
+            payload.put("notification", notification);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, fcmUrl, payload,
+                response -> {
+                    Log.d(TAG, "Notification sent to FCM");
+                },
+                error -> {
+                    Log.e(TAG, "Notification sending failed to FCM: " + error.toString());
+                }
+        ) {
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "key=" + serverKey);
+                headers.put("Content-Type", "application/json");
+                return headers;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(request);
+    }
+
+
 
     private void showNotification(String message) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

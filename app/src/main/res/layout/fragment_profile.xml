@@ -98,7 +98,8 @@
             android:layout_below="@id/sosmed"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10pt"
-            android:text="Logout" />
+            android:text="Logout"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/btnNotif"
@@ -107,7 +108,7 @@
             android:layout_below="@id/btnLogout"
             android:layout_centerHorizontal="true"
             android:text="Notif"
-            android:visibility="invisible"/>
+            android:visibility="gone"/>
 
 
     </RelativeLayout>

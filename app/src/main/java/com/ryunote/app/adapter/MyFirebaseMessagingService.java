@@ -22,18 +22,30 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     static private final String TAG = "Firebase Cloud Messaging";
     @Override
     public void onMessageReceived(@NonNull RemoteMessage message) {
-        super.onMessageReceived(message);
-        String title = message.getNotification().getTitle();
-        String content = message.getNotification().getBody();
-        String source = message.getFrom();
-        Log.d(TAG, "From: " + source);
-
-        if (message.getNotification() != null) {
-            Log.d(TAG, "Judul Notifikasi: " + title);
-            Log.d(TAG, "Isi Notifikasi: " + content);
+        if(message.getData().size() > 0) {
+            generateNotification(getApplicationContext(), message.getData().get("title"), message.getData().get("body"));
+        }if(message.getNotification() != null) {
+            sendNotification(message.getNotification().getTitle(), message.getNotification().getBody());
         }
-
+        super.onMessageReceived(message);
     }
+
+    private void generateNotification(Context context, String title, String body) {
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        String channelId = "channel-fbase";
+        String channelName = "Channel FBase";
+        int importance = NotificationManager.IMPORTANCE_HIGH;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel mChannel = new NotificationChannel(channelId, channelName, importance);
+            notificationManager.createNotificationChannel(mChannel);
+        }
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, channelId)
+                .setSmallIcon(R.drawable.logo)
+                .setContentTitle(title)
+                .setContentText(body);
+        notificationManager.notify(0, mBuilder.build());
+    }
+
     private void sendNotification(String title, String messageBody) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -64,4 +76,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
     }
+
+    @Override
+    public void onNewToken(@NonNull String token) {
+        super.onNewToken(token);
+        Log.d(TAG, "Refreshed token: " + token);
+    }
+
+
 }

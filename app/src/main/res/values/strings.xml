@@ -8,4 +8,6 @@
     <string name="channel_name">RyuNote</string>
     <string name="channel_description">RyuNote Notification</string>
     <string name="logout">Logout</string>
+    <string name="FCM_ServerKey">AAAAvm10D2o:APA91bF5jK9ELyk3RsX4UPrWhgY8Rnly9K4QQ4SqqAL00OUxCbe6ulJe9D279786YTd0QFUN0Of1oNcuCiyF417atSjcIuDhAFSixCvdWo6jIdPzPqjCFD574P58qT-PxNfj-HjtYd6O</string>
+    <string name="Token_aplikasi">do0Lyd8TTRKP7P7CnrC62c:APA91bGBgUhd84q7xIUud0dUn8-iYSKBJUkE3gqyGzj7pyCyUgChIZ7C68ulYMxDp3xUEViEIJDI4eWnt1hxbCnElbpKVBigfRkS1Za09Lw_dx9n0rQBLyveIHAlXI4SR-1ReRaSHan_</string>
 </resources>
