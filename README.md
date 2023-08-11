@@ -1,5 +1,5 @@
 # ![app icon](https://github.com/Irnhakim/RyuNote/blob/main/assets/logo.png)RyuNote
-RyuNote adalah aplikasi catatan gratis terintegrasi dengan Firebase Realtime Database
+RyuNote adalah aplikasi catatan gratis, terintegrasi dengan Firebase Realtime Database
 
 ## Features
 * Google account authentication
