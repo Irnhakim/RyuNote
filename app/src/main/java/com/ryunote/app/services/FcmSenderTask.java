@@ -1,8 +1,8 @@
 package com.ryunote.app.services;
-/**
- * NIM : 10120160
- * Nama : Rendi Julianto
- * Kelas : IF-4
+/*
+  Nama : Ihsan Ramadhan Nul Hakim
+  NIM  : 10120143
+  Kelas: IF-4
  */
 import android.os.AsyncTask;
 import android.util.Log;

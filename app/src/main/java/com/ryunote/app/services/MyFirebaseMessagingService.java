@@ -1,5 +1,9 @@
 package com.ryunote.app.services;
-
+/*
+  Nama : Ihsan Ramadhan Nul Hakim
+  NIM  : 10120143
+  Kelas: IF-4
+ */
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;

@@ -8,7 +8,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import com.ryunote.app.model.Note;
-
+/*
+  Nama : Ihsan Ramadhan Nul Hakim
+  NIM  : 10120143
+  Kelas: IF-4
+ */
 public class DatabaseHelper extends SQLiteOpenHelper implements NoteInterface {
 
     public DatabaseHelper(@Nullable Context context) {

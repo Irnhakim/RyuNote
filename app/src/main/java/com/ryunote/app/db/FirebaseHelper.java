@@ -6,7 +6,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.ryunote.app.model.Note;
-
+/*
+  Nama : Ihsan Ramadhan Nul Hakim
+  NIM  : 10120143
+  Kelas: IF-4
+ */
 public class FirebaseHelper implements NoteInterface {
 
     private FirebaseAuth auth;

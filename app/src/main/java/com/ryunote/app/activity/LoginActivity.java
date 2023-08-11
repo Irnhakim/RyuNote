@@ -1,5 +1,9 @@
 package com.ryunote.app.activity;
-
+/*
+  Nama : Ihsan Ramadhan Nul Hakim
+  NIM  : 10120143
+  Kelas: IF-4
+ */
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

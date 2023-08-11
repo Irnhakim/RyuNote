@@ -1,5 +1,9 @@
 package com.ryunote.app.model;
-//Ihsan Ramadhan Nul Hakim 10120143 IF-4
+/*
+  Nama : Ihsan Ramadhan Nul Hakim
+  NIM  : 10120143
+  Kelas: IF-4
+ */
 import java.io.Serializable;
 
 public class Note implements Serializable {

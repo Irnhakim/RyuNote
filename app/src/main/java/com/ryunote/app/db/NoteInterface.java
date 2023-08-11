@@ -1,5 +1,9 @@
 package com.ryunote.app.db;
-//Ihsan Ramadhan Nul Hakim 10120143 IF-4
+/*
+  Nama : Ihsan Ramadhan Nul Hakim
+  NIM  : 10120143
+  Kelas: IF-4
+ */
 import android.database.Cursor;
 
 import com.ryunote.app.model.Note;

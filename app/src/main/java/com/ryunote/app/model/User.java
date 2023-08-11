@@ -1,5 +1,9 @@
 package com.ryunote.app.model;
-
+/*
+  Nama : Ihsan Ramadhan Nul Hakim
+  NIM  : 10120143
+  Kelas: IF-4
+ */
 public class User {
 
     String userId, name, profile;

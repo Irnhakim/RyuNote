@@ -1,5 +1,9 @@
 package com.ryunote.app.ui.info;
-//Ihsan Ramadhan Nul Hakim 10120143 IF-4
+/*
+  Nama : Ihsan Ramadhan Nul Hakim
+  NIM  : 10120143
+  Kelas: IF-4
+ */
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
