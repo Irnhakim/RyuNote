@@ -4,11 +4,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import com.ryunote.app.NoteInterface;
 import com.ryunote.app.model.Note;
 
 public class DatabaseHelper extends SQLiteOpenHelper implements NoteInterface {

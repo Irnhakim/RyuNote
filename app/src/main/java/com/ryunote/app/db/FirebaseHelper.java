@@ -1,12 +1,10 @@
 package com.ryunote.app.db;
 
 import android.database.Cursor;
-import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.ryunote.app.NoteInterface;
 import com.ryunote.app.model.Note;
 
 public class FirebaseHelper implements NoteInterface {

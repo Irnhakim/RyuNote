@@ -15,7 +15,7 @@
     <ImageButton
         android:layout_margin="20dp"
         android:id="@+id/back"
-        android:background="@android:color/transparent"
+        android:background="@color/white"
         android:src="@drawable/baseline_arrow_back_24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -23,7 +23,7 @@
         android:id="@+id/txt_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Notes"
+        android:text="Tambah Catatan"
         android:textColor="@color/white"
         android:textSize="25dp"
         android:textStyle="bold"
@@ -43,9 +43,9 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#0047AB"
+            android:textColor="@color/black"
             android:hint="Title"
-            android:background="#3000B0FF"
+            android:background="#e0e0e0"
             android:padding="10dp"
             android:layout_margin="10dp"/>
         <EditText
@@ -53,8 +53,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="category"
-            android:textColor="#0047AB"
-            android:background="#3000B0FF"
+            android:textColor="@color/black"
+            android:background="#e0e0e0"
             android:padding="10dp"
             android:layout_margin="10dp"/>
         <EditText
@@ -62,8 +62,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Decription"
-            android:textColor="#0047AB"
-            android:background="#3000B0FF"
+            android:textColor="@color/black"
+            android:background="#e0e0e0"
             android:padding="10dp"
             android:layout_margin="10dp"
             android:lines="10"

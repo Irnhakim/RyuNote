@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.view.Window;
 
 import com.ryunote.app.R;
+import com.ryunote.app.activity.LoginActivity;
 import com.ryunote.app.activity.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {

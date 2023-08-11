@@ -1,7 +1,6 @@
 package com.ryunote.app.ui.note;
 //Ihsan Ramadhan Nul Hakim 10120143 IF-4
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,12 +20,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.ryunote.app.NoteInterface;
 import com.ryunote.app.activity.AddNoteActivity;
 import com.ryunote.app.activity.MainActivity;
 import com.ryunote.app.R;
 import com.ryunote.app.adapter.NoteAdapter;
-import com.ryunote.app.db.DatabaseHelper;
 import com.ryunote.app.model.Note;
 
 import java.util.ArrayList;
