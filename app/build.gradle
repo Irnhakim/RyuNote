@@ -3,7 +3,11 @@ plugins {
     id 'com.google.gms.google-services'
 
 }
-
+/*
+  Nama : Ihsan Ramadhan Nul Hakim
+  NIM  : 10120143
+  Kelas: IF-4
+ */
 android {
     namespace 'com.ryunote.app'
     compileSdk 33
