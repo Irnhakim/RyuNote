@@ -5,6 +5,7 @@ RyuNote adalah aplikasi catatan gratis, terintegrasi dengan Firebase Realtime Da
 * Google account authentication
 * Email Login
 * Realtime Database
+* Firebase Cloud Messaging
 
 # Download
 Download Aplikasinya disini [releases page](https://github.com/Irnhakim/RyuNote/blob/main/Release).
